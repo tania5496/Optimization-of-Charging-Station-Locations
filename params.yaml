@@ -1,0 +1,75 @@
+city:
+  name: "Lviv, Ukraine"
+  graph_type: "drive"
+  raster_file_population: "ukr_ppp_2020_constrained.tif"
+  distance_matrix: "distance_matrix_lviv_not_directed.npy"
+  grid_size: 0.0125
+
+ev:
+  ev_per_capita: 0.010
+  avg_consumption_per_km: 159.9
+
+charging_stations:
+  types:
+    Level_2 7.4kW: 
+      cost: 2000
+      capacity: 7400
+      voltage: 240
+    Level_2 22kW: 
+      cost: 5000
+      capacity: 22000
+      voltage: 240
+    Level_2 50kW: 
+      cost: 7200
+      capacity: 55000
+      voltage: 240
+    Level_3 60kW: 
+      cost: 10000
+      capacity: 60000
+      voltage: 480
+    Level_3 120kW: 
+      cost: 30000
+      capacity: 120000
+      voltage: 480
+    Level_3 160kW: 
+      cost: 50000
+      capacity: 160000
+      voltage: 480
+  max_ports_per_node: 4
+  energy_loss: 0.1
+  types_list: ["Level_2 7.4kW", "Level_2 22kW", "Level_2 50kW", "Level_3 60kW", "Level_3 120kW", "Level_3 160kW"]
+
+simulation:
+  simulation_hours: 24
+  avg_battery_capacity: 60000
+  initial_soc_range: [0.3, 1.0]
+  min_target_charge: [0.8, 1.0]
+  min_charging_threshold: [0.2, 0.3]
+  commute_hours:
+    morning: [6, 10]
+    evening: [16, 20]
+
+evaluation_weights:
+  cost: 0.001
+  charging_time: 5000
+  distance: 10
+  grid_loss: 3
+
+genetic_algorithm:
+  population_size: 50
+  generations: 100
+  mutation_rate: 0.1
+  crossover_rate: 0.5
+
+particle_swarm_optimization:
+  particles: 40
+  iterations: 100
+  inertia_weight: 0.3
+  cognitive_coeff: 1.5
+  social_coeff: 1.5
+
+simulated_annealing:
+  initial_temperature: 1000
+  cooling_rate: 0.99
+  min_temperature: 1
+  iterations: 100
