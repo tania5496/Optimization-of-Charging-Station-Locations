@@ -1,0 +1,5 @@
+simulated_annealing:
+  initial_temperature: 1000
+  cooling_rate: 0.999
+  min_temperature: 1
+  iterations: 1500
