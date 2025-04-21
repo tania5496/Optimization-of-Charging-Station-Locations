@@ -1,13 +1,8 @@
-from src.simulation.data_preperation import create_cs_dataframe, create_cs_occupation_dataframe
-from src.simulation.ev_charging import needs_charge, nearest_cs_search, charge_ev
-from src.simulation.ev_generation import generate_EVs
+from .data_preperation import create_cs_dataframe, create_cs_occupation_dataframe
+from .ev_charging import needs_charge, nearest_cs_search, charge_ev
+from .ev_generation import generate_EVs
 import random
 import pandas as pd
-# import yaml
-# with open("configs/params.yaml", "r") as f:
-#     config = yaml.safe_load(f)
-
-# params = config
 def simulate_charging_demand(solution, params, region_to_population, node_to_region, region_to_nodes, dist_matrix, nodes_id):
     """
     Simulates EV charging behavior and station usage for a full day.

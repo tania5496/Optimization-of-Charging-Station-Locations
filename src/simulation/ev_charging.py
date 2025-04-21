@@ -1,8 +1,3 @@
-# import yaml
-# with open("configs/params.yaml", "r") as f:
-#     config = yaml.safe_load(f)
-
-# params = config
 def needs_charge(ev):
     """
     Determines if EV needs to charge based on its current state and threshold.
@@ -15,7 +10,6 @@ def nearest_cs_search(charging_station_df, current_location, dist_matrix, nodes_
     Sorts charging stations by distance to given location and capacity.
     """
     nearest_cs = charging_station_df.copy()
-    cs_nodes = nearest_cs["node"]
 
     nearest_cs["distance"] = nearest_cs["node"].apply(lambda x: dist_matrix[nodes_id[current_location], nodes_id[x]])
     nearest_cs = nearest_cs.sort_values(by = ["distance", "capacity"], ascending=[True, False])

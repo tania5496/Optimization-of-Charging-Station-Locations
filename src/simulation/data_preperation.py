@@ -1,9 +1,5 @@
 import pandas as pd
-# import yaml
-# with open("configs/params.yaml", "r") as f:
-#     config = yaml.safe_load(f)
 
-# params = config
 def create_cs_dataframe(solution, station_params):
     """
     Combines installed and new (optimized) charging stations into a single DataFrame.
@@ -43,7 +39,7 @@ def create_cs_occupation_dataframe(charging_station_df, simulation_hours):
 
         # Creating rows for each port and hour
         for port in range(1, number_of_ports + 1):
-            for hour in range(24):
+            for hour in range(simulation_hours):
                 cs_occupation_df.loc[len(cs_occupation_df)] = {"cs_id": cs_id, "capacity": capacity, "port": port, "hour": hour, "occupation_time": 0.0}
 
     cs_occupation_df["cs_id"] = cs_occupation_df["cs_id"].astype(int)

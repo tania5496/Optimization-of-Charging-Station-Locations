@@ -1,9 +1,5 @@
 import random
-# import yaml
-# with open("configs/params.yaml", "r") as f:
-#     config = yaml.safe_load(f)
 
-# params = config
 def generate_route(ev, nodes):
     """
     Generates a daily route for an EV, including destinations and parking periods.
@@ -77,7 +73,7 @@ def generate_EVs(regions, region_to_population, region_to_nodes, nodes, params):
             battery_capacity = params["ev"]["battery_capacity"]
             initial_soc_range = params["simulation"]["initial_soc_range"]
             charging_threshold = params["simulation"]["charging_threshold"]
-            target_charge = params["simulation"]["min_target_charge"]
+            target_charge = params["simulation"]["target_charge"]
             morning_commute_hours = params["simulation"]["commute_hours"]["morning"]
             evening_commute_hours = params["simulation"]["commute_hours"]["evening"]
 
@@ -90,8 +86,8 @@ def generate_EVs(regions, region_to_population, region_to_nodes, nodes, params):
                     "charging_threshold": random.uniform(charging_threshold[0], charging_threshold[1]),  # When to start charging
                     "target_charge": random.uniform(target_charge[0], target_charge[1]),  # Target charge level
                     "commute_hours": {
-                        "morning": random.uniform(morning_commute_hours[0], morning_commute_hours[1]),  # Morning commute hour (6-9 AM)
-                        "evening": random.uniform(evening_commute_hours[0], evening_commute_hours[1])  # Evening commute hour (4-7 PM)
+                        "morning": random.randint(morning_commute_hours[0], morning_commute_hours[1]),  # Morning commute hour (6-9 AM)
+                        "evening": random.randint(evening_commute_hours[0], evening_commute_hours[1])  # Evening commute hour (4-7 PM)
                     },
                     "destinations": None,  # Will be assigned below
                     "parking_periods": None  # Will be assigned below
