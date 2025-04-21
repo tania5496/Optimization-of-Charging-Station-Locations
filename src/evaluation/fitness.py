@@ -1,9 +1,4 @@
 from src.simulation.demand_simulation import simulate_charging_demand
-# import yaml
-# with open("configs/params.yaml", "r") as f:
-#     config = yaml.safe_load(f)
-
-# params = config
 
 def cs_cost_penalty(solution, station_params):
     """
@@ -63,10 +58,10 @@ def evaluate_fitness(solution, params, dist_matrix, region_to_population, node_t
     Returns:
         tuple: (fitness score, cost score, charging time score, distance score, grid loss score)
     """
-    alpha = params["alpha"]
-    beta = params["beta"]
-    gamma = params["gamma"]
-    delta = params["delta"]
+    alpha = params["evaluation_weights"]["alpha"]
+    beta = params["evaluation_weights"]["beta"]
+    gamma = params["evaluation_weights"]["gamma"]
+    delta = params["evaluation_weights"]["delta"]
 
     cs_occupation_df, charging_session_data = simulate_charging_demand(solution, params, region_to_population, node_to_region, region_to_nodes,
                                 dist_matrix, nodes_id)
