@@ -1,59 +1,54 @@
 city:
-  name: "Lviv, Ukraine"
+  name: "Lviv"
   graph_type: "drive"
-  raster_file_population: "ukr_ppp_2020_constrained.tif"
-  distance_matrix: "distance_matrix_lviv_not_directed.npy"
+  raster_file_population: "src/data/ukr_ppp_2020_constrained.tif"
+  distance_matrix: "distance_matrix_lviv.npy"
+  distance_matrix: False
   grid_size: 0.0125
 
 ev:
-  ev_per_capita: 0.010
+  ev_per_capita: 0.004
+  battery_capacity: [50000, 100000]
   avg_consumption_per_km: 159.9
 
 charging_stations:
   types:
     Level_2 7.4kW: 
-      cost: 2000
+      cost: 1000.0
       capacity: 7400
-      voltage: 240
     Level_2 22kW: 
-      cost: 5000
+      cost: 2000.0
       capacity: 22000
-      voltage: 240
     Level_2 50kW: 
-      cost: 7200
-      capacity: 55000
-      voltage: 240
-    Level_3 60kW: 
-      cost: 10000
-      capacity: 60000
-      voltage: 480
+      cost: 8500.0
+      capacity: 50000
+    Level_3 80kW: 
+      cost: 10000.0
+      capacity: 80000
     Level_3 120kW: 
-      cost: 30000
+      cost: 12000.0
       capacity: 120000
-      voltage: 480
     Level_3 160kW: 
-      cost: 50000
+      cost: 15000.0
       capacity: 160000
-      voltage: 480
   max_ports_per_node: 4
   energy_loss: 0.1
-  types_list: ["Level_2 7.4kW", "Level_2 22kW", "Level_2 50kW", "Level_3 60kW", "Level_3 120kW", "Level_3 160kW"]
+  types_list: ["Level_2 7.4kW", "Level_2 22kW", "Level_2 50kW", "Level_3 80kW", "Level_3 120kW", "Level_3 160kW"]
 
 simulation:
   simulation_hours: 24
-  avg_battery_capacity: 60000
   initial_soc_range: [0.3, 1.0]
-  min_target_charge: [0.8, 1.0]
-  min_charging_threshold: [0.2, 0.3]
+  target_charge: [0.8, 1.0]
+  charging_threshold: [0.2, 0.3]
   commute_hours:
-    morning: [6, 10]
-    evening: [16, 20]
+    morning: [6, 9]
+    evening: [16, 19]
 
 evaluation_weights:
-  cost: 0.001
-  charging_time: 5000
-  distance: 10
-  grid_loss: 3
+  alpha: 0.001
+  beta: 5000
+  gamma: 10
+  delta: 0.01
 
 genetic_algorithm:
   population_size: 50
@@ -64,12 +59,12 @@ genetic_algorithm:
 particle_swarm_optimization:
   particles: 40
   iterations: 100
-  inertia_weight: 0.3
-  cognitive_coeff: 1.5
-  social_coeff: 1.5
+  w: 0.3
+  c1: 1.5
+  c2: 1.5
 
 simulated_annealing:
   initial_temperature: 1000
   cooling_rate: 0.99
   min_temperature: 1
-  iterations: 100
+  iterations: 1500
