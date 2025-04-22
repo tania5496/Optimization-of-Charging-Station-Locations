@@ -2,6 +2,6 @@ city:
   name: "Kyiv"
   graph_type: "drive"
   raster_file_population: "src/data/ukr_ppp_2020_constrained.tif"
-  distance_matrix: "src/data/distance_matrix_kyiv.npy"
+  distance_matrix: "distance_matrix_kyiv.npy"
   distance_matrix: False
   grid_size: 0.0125

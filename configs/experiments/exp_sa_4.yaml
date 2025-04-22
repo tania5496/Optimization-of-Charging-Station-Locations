@@ -3,3 +3,4 @@ simulated_annealing:
   cooling_rate: 0.99
   min_temperature: 1
   iterations: 1500
+  bad_attempts_limit: 20
