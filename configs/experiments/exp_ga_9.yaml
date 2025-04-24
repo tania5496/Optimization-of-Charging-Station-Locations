@@ -1,0 +1,4 @@
+ev:
+  ev_per_capita: 0.08
+  battery_capacity: [50000, 100000]
+  avg_consumption_per_km: 159.9

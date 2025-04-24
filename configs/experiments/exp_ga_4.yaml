@@ -1,0 +1,6 @@
+genetic_algorithm:
+  population_size: 100
+  num_of_parents: 80
+  generations: 100
+  mutation_rate: 0.1
+  crossover_point: 0.4
