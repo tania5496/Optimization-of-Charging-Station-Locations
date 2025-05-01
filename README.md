@@ -26,9 +26,9 @@ The growing concern over environmental sustainability has accelerated the adopti
 
 ## ⚙️ Features
 
-- 🧬 **Genetic Algorithm (GA)** with customizable mutation/selection rates
-- 🕊️ **Particle Swarm Optimization (PSO)** with convergence tracking
-- 🔥 **Simulated Annealing (SA)** with flexible temperature schedules
+- 🧬 **Genetic Algorithm (GA)**
+- 🕊️ **Particle Swarm Optimization (PSO)**
+- 🔥 **Simulated Annealing (SA)**
 - 📍 **Multi-objective Optimization** combining:
   - Installation cost
   - Average user distance to station
