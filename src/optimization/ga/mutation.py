@@ -8,8 +8,8 @@ def mutate(solution, nodes, cs_types, mutation_rate, max_ports_per_station):
     if random.random() >= mutation_rate: # No mutation
         return solution
     
-    rng = random.Random()
-    action = rng.choice(["add", "remove", "change_type"])
+    action = random.choice(["add", "remove", "change_type"])
+
 
     if action == "remove":  # Remove random stations
         num_of_stations = random.choices([1, 2, 3, 4], [0.4, 0.3, 0.2, 0.1])[0]

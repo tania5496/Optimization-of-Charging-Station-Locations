@@ -39,7 +39,7 @@ def genetic_algorithm(G, dist_matrix, params, region_to_population, node_to_regi
         print("Generation", generation + 1, "/", generations)
 
         # Selecting parents
-        parents, parents_fitness = select_parents(population, num_of_parents, num_of_parents)
+        parents, parents_fitness = select_parents(population, total_fitness, num_of_parents)
         # Offspring
         offsprings = []
         for i in range(0, len(parents), 2):

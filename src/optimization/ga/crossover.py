@@ -30,6 +30,6 @@ def crossover(parent1, parent2, fitness1, fitness2, crossover_point, max_ports_p
         if cs in child:
             child[cs] = min(max_ports_per_station, child[cs] + parent2[cs])
         else:
-            child[cs] = parent1[cs]
+            child[cs] = parent2[cs]
 
     return child

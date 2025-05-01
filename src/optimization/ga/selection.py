@@ -6,6 +6,7 @@ def select_parents(population, fitness, num_of_parents):
     Returns: list of selected parent solutions.
     """
     # Invert fitness values (since lower fitness is better)
+    
     adjusted_fitness = [1/f for f in fitness]
 
     total_adjusted_fitness = sum(adjusted_fitness)
