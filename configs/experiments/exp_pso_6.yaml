@@ -1,0 +1,7 @@
+particle_swarm_optimization:
+  particles: 25
+  iterations: 100
+  w: 0.5
+  c1: 1.5
+  c2: 1.5
+  mutation_rate: 0.1

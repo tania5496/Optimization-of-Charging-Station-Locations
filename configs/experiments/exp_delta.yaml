@@ -1,0 +1,5 @@
+evaluation_weights:
+  alpha: 0.001
+  beta: 5000
+  gamma: 10
+  delta: 0.1

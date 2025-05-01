@@ -1,0 +1,11 @@
+evaluation_weights:
+  alpha: 0.005
+  beta: 5000
+  gamma: 10
+  delta: 0.01
+# simulated_annealing:
+#   initial_temperature: 1000
+#   cooling_rate: 0.99
+#   min_temperature: 1
+#   iterations: 1000
+#   bad_attempts_limit: 20
