@@ -36,3 +36,5 @@ The growing concern over environmental sustainability has accelerated the adopti
   - Average time required to charge 1kWh
   - Total distance from charging stations to closest power substations
 - **Charging Demand Simulation** of EV demand using population data and value of EV per capita
+
+Links to large files: https://drive.google.com/drive/folders/1P0OnFfs6BdjIo8UwKC60HL8YZ8vTMF4E?usp=drive_link
