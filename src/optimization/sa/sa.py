@@ -31,6 +31,7 @@ def SA_algorithm(G, dist_matrix, params, region_to_population, node_to_region, r
     T = sa_params["initial_temperature"]
     cooling_rate = sa_params["cooling_rate"]
     iterations = sa_params["iterations"]
+    bad_attempts_limit = sa_params["bad_attempts_limit"]
     testing_worse_solution = False
     for iteration in range(iterations):
         print("Iteration", iteration + 1, "/", iterations)
@@ -45,7 +46,7 @@ def SA_algorithm(G, dist_matrix, params, region_to_population, node_to_region, r
             current_fitness = new_fitness
             if delta_fitness > 0:
                 testing_worse_solution = True
-                k = 20
+                bad_attemmpts = bad_attempts_limit
             else:
                 testing_worse_solution = False
 
@@ -58,8 +59,8 @@ def SA_algorithm(G, dist_matrix, params, region_to_population, node_to_region, r
         else:
             best_fitness_list.append(best_fitness_list[-1]) # when best solution hasn't changed
             if testing_worse_solution:
-                k -=1
-        if testing_worse_solution and k == 0:
+                bad_attemmpts -=1
+        if testing_worse_solution and bad_attemmpts == 0:
             current_solution = best_solution
             current_fitness = best_fitness
             testing_worse_solution = False

@@ -1,6 +1,6 @@
 import random
 
-def add_random_station(solution, nodes, cs_types, max_ports_per_node):
+def add_random_station(solution, nodes, cs_types, max_ports_per_station):
     """
     Adds a random number of new charging stations to randomly selected nodes, considering port limits.
     Returns: dict (updated solution dictionary after station additions)
@@ -18,14 +18,14 @@ def add_random_station(solution, nodes, cs_types, max_ports_per_node):
         # Generate random node, type 
         random_node = random.choice(nodes)
         cs_type = random.choice(cs_types)
-        while random_node in total_node_ports.keys() and total_node_ports[random_node] == max_ports_per_node:
+        while random_node in total_node_ports.keys() and total_node_ports[random_node] == max_ports_per_station:
             random_node = random.choice(nodes)
 
         # Generate random number of ports taking into account number of existing stations in the node
         if random_node in total_node_ports.keys():
-            num_of_ports = random.choice(range(0, max_ports_per_node - total_node_ports[random_node])) + 1
+            num_of_ports = random.choice(range(0, max_ports_per_station - total_node_ports[random_node])) + 1
         else:
-            num_of_ports = random.choice(range(0, max_ports_per_node)) + 1
+            num_of_ports = random.choice(range(0, max_ports_per_station)) + 1
 
         # Generate random number of ports taking into account number of existing stations in the node
         if (random_node, cs_type) in new_solution:
@@ -60,7 +60,7 @@ def remove_random_station(solution):
             new_solution.pop(random_station)
     return new_solution
 
-def change_station_type(solution, cs_types, max_ports_per_node):
+def change_station_type(solution, cs_types, max_ports_per_station):
     """
     Randomly changes the types of selected charging stations, transferring ports where necessary.
     Returns: dict (updated solution with some station types changed)
@@ -75,7 +75,7 @@ def change_station_type(solution, cs_types, max_ports_per_node):
 
         new_cs_type = random.choice(new_cs_types_list)
         if (cs_node, new_cs_type) in new_solution:
-            new_solution[(cs_node, new_cs_type)] = min(max_ports_per_node, \
+            new_solution[(cs_node, new_cs_type)] = min(max_ports_per_station, \
                                                        new_solution[(cs_node, cs_type)] + new_solution[(cs_node, new_cs_type)])
         else:
             new_solution[(cs_node, new_cs_type)] = new_solution[(cs_node, cs_type)]
@@ -89,16 +89,16 @@ def generate_new_solution(solution, nodes, station_params):
     Generates a new candidate solution by performing a random modification (add, remove, or change).
     Returns: dict (new candidate solution after applying a random change)
     """
-    rng = random.Random()
     cs_types = station_params["types_list"]
-    max_ports_per_node = station_params["max_ports_per_node"]
+    max_ports_per_station = station_params["max_ports_per_station"]
 
-    action = rng.choice(["add", "remove", "change_type"])
+    action = random.choice(["add", "remove", "change_type"])
+    print(action)
     if action == "add":
-        new_solution = add_random_station(solution, nodes, cs_types, max_ports_per_node)
+        new_solution = add_random_station(solution, nodes, cs_types, max_ports_per_station)
     elif action == "remove":
         new_solution = remove_random_station(solution)
     else:
-        new_solution = change_station_type(solution, cs_types, max_ports_per_node)
+        new_solution = change_station_type(solution, cs_types, max_ports_per_station)
 
     return new_solution
