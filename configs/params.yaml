@@ -3,7 +3,6 @@ city:
   graph_type: "drive"
   raster_file_population: "src/data/ukr_ppp_2020_constrained.tif"
   distance_matrix: "distance_matrix_lviv.npy"
-  distance_matrix: False
   grid_size: 0.0125
 
 ev:
@@ -17,7 +16,7 @@ charging_stations:
       cost: 1000.0
       capacity: 7400
     Level_2 22kW: 
-      cost: 2000.0
+      cost: 2000.0    
       capacity: 22000
     Level_2 50kW: 
       cost: 8500.0
@@ -31,7 +30,7 @@ charging_stations:
     Level_3 160kW: 
       cost: 15000.0
       capacity: 160000
-  max_ports_per_node: 4
+  max_ports_per_station: 4
   energy_loss: 0.1
   types_list: ["Level_2 7.4kW", "Level_2 22kW", "Level_2 50kW", "Level_3 80kW", "Level_3 120kW", "Level_3 160kW"]
 
@@ -51,17 +50,19 @@ evaluation_weights:
   delta: 0.01
 
 genetic_algorithm:
-  population_size: 50
+  population_size: 100
+  num_of_parents: 50
   generations: 100
   mutation_rate: 0.1
-  crossover_rate: 0.5
+  crossover_point: 0.4
 
 particle_swarm_optimization:
-  particles: 40
+  particles: 25
   iterations: 100
   w: 0.3
   c1: 1.5
   c2: 1.5
+  mutation: False
 
 simulated_annealing:
   initial_temperature: 1000
